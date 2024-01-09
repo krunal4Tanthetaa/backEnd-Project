@@ -45,15 +45,9 @@ reviewSchema.pre(/^find/, function (next) {
   next();
 });
 
-
-
 // reviewSchema.pre('save' , function(next) {
 
-  
 // })
-
-
-
 
 reviewSchema.statics.calcAverageRatings = async function (tourId) {
   const stats = await this.aggregate([

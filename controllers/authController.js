@@ -5,7 +5,6 @@ const User = require('./../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const Email = require('./../utils/email');
-const { create } = require('../models/tourModel');
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
@@ -86,7 +85,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
   // 2) verification token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  //console.log(decoded);
+
   // 3) check if user still exists
   const currentUser = await User.findById(decoded.id);
   if (!currentUser) {
@@ -135,7 +134,7 @@ exports.restrictTo =  (...roles) => {
   return (req, res, next) => {
     // roles ['admin' , 'lead-guide'],role='user'
     if (!roles.includes(req.user.role)) {
-     // console.log("hiiiiiiiiiiiiiii");
+
       return next(new AppError('You do not have permission to perform this action',403));
     }
     next();

@@ -12,27 +12,35 @@ module.exports = class Email {
   }
 
   newTransport() {
-    if (process.env.NODE_ENV === 'production') {
+    // if (process.env.NODE_ENV === 'production') {
 
-      return  nodemailer.createTransport({
-        service: 'Brevo',
-        auth: {
-          user: process.env.SENDGRID_USERNAME,
-          pass: process.env.SENDGRID_PASSWORD,
-        }
-      })
-    }
-
-
+    //   return  nodemailer.createTransport({
+    //     service: 'Brevo',
+    //     auth: {
+    //       user: process.env.SENDGRID_USERNAME,
+    //       pass: process.env.SENDGRID_PASSWORD,
+    //     }
+    //   })
+    // }
 
     return nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: process.env.EMAIL_PORT,
+      host: 'smtp.ethereal.email',
+      port: 587,
       auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
+          user: 'cameron91@ethereal.email',
+          pass: 'teByqvVmzCWVWK3gNj'
+      }
+  });
+
+
+    // return nodemailer.createTransport({
+    //   host: process.env.EMAIL_HOST,
+    //   port: process.env.EMAIL_PORT,
+    //   auth: {
+    //     user: process.env.EMAIL_USERNAME,
+    //     pass: process.env.EMAIL_PASSWORD,
+    //   },
+    // });
   }
 
   //Send the actual email

@@ -2,8 +2,7 @@ const User = require(`./../models/userModel`);
 const Booking = require('../models/bookingModel');
 const multer = require('multer');
 const sharp = require('sharp');
-const APIFeatures = require(`../utils/apiFeature`);
-const AppError = require('../utils/appError').default;
+const AppError = require('../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
 const factory = require('./handlerFactory');
 

@@ -12,12 +12,12 @@ router.get('/checkout-session/:tourId' , bookingController.checkTourAvaileble , 
 
 router.use(authController.restrictTo('admin' , 'lead-guide'));
 
-router 
+router
    .route('/')
    .get(authController.protect, bookingController.getAllBookings)
    .post( bookingController.createBooking);
 
-router 
+router
   .route('/:id')
   .get( bookingController.getBookings)
   .patch(bookingController.updateBooking)

@@ -20,7 +20,7 @@ export const login = async ( email , password ) => {
       location.assign('/');
     }, 1500);
   }
- 
+
 
  } catch(err){
   showAlert('error' , err.response.data.message);
